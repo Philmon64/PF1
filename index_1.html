@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tigrinya für Kinder | Tigrinya Learning for Kids</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        /* Language Notification Banner */
+        .language-banner {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 12px 20px;
+            text-align: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            animation: slideDown 0.5s ease-out;
+        }
+
+        .language-banner.hidden {
+            display: none;
+        }
+
+        .banner-content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .close-banner {
+            background: rgba(255,255,255,0.2);
+            border: none;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 18px;
+            transition: background 0.3s;
+        }
+
+        .close-banner:hover {
+            background: rgba(255,255,255,0.3);
+        }
+
+        @keyframes slideDown {
+            from {
+                transform: translateY(-100%);
+            }
+            to {
+                transform: translateY(0);
+            }
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px 0;
+            position: sticky;
+            top: 48px;
+            z-index: 999;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+        }
+
+        .lang-switcher {
+            display: flex;
+            gap: 10px;
+        }
+
+        .lang-btn {
+            background: rgba(255,255,255,0.2);
+            border: 2px solid white;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 600;
+        }
+
+        .lang-btn:hover, .lang-btn.active {
+            background: white;
+            color: #667eea;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            padding: 100px 20px;
+            text-align: center;
+            margin-top: 48px;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 30px;
+            animation: fadeInUp 1s ease-out 0.2s;
+            animation-fill-mode: both;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Features Section */
+        .features {
+            padding: 80px 20px;
+            background: #f8f9fa;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            text-align: center;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .feature-card h3 {
+            color: #667eea;
+            margin-bottom: 15px;
+        }
+
+        /* Notify Section */
+        .notify-section {
+            padding: 80px 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-align: center;
+        }
+
+        .notify-form {
+            max-width: 500px;
+            margin: 40px auto 0;
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+        }
+
+        .notify-form h3 {
+            color: #667eea;
+            margin-bottom: 25px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            color: #333;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .notify-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 30px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+            width: 100%;
+        }
+
+        .notify-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+        }
+
+        .success-message {
+            display: none;
+            background: #4caf50;
+            color: white;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+
+        /* Kung Fu Panda Section */
+        .kfp-section {
+            padding: 80px 20px;
+            background: #fff;
+            text-align: center;
+        }
+
+        .kfp-section h2 {
+            color: #667eea;
+            margin-bottom: 20px;
+            font-size: 2rem;
+        }
+
+        .kfp-section p {
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 40px;
+        }
+
+        .slideshow-container {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+        }
+
+        .slide {
+            display: none;
+            animation: fade 1s;
+        }
+
+        .slide.active {
+            display: block;
+        }
+
+        .slide img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        @keyframes fade {
+            from {opacity: 0.4}
+            to {opacity: 1}
+        }
+
+        .dots {
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        .dot {
+            height: 15px;
+            width: 15px;
+            margin: 0 5px;
+            background-color: #bbb;
+            border-radius: 50%;
+            display: inline-block;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .dot.active {
+            background-color: #667eea;
+        }
+
+        /* Footer */
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 30px 20px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .logo {
+                font-size: 1.4rem;
+            }
+
+            .lang-btn {
+                padding: 6px 12px;
+                font-size: 0.9rem;
+            }
+
+            .notify-form {
+                padding: 30px 20px;
+            }
+
+            .banner-content {
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Language Banner -->
+    <div class="language-banner" id="languageBanner">
+        <div class="banner-content">
+            <span id="bannerText">Diese Seite ist auch auf Tigrinya und Englisch verfügbar</span>
+            <button class="close-banner" onclick="closeBanner()">×</button>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <nav class="container">
+            <div class="logo" id="logoText">🎓 Tigrinya Lernen</div>
+            <div class="lang-switcher">
+                <button class="lang-btn active" onclick="switchLanguage('de')">DE</button>
+                <button class="lang-btn" onclick="switchLanguage('en')">EN</button>
+                <button class="lang-btn" onclick="switchLanguage('ti')">ትግ</button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1 id="heroTitle">Möchten Sie Ihrem Kind Tigrinya beibringen?</h1>
+            <p id="heroText">Haben Sie Schwierigkeiten, Ihrem Kind Tigrinya beizubringen, oder sind Sie frustriert, dass es nicht viele verfügbare Lerntools auf Tigrinya gibt? Wir haben die Lösung! Wir bringen Ihrem Kind Tigrinya bei, als wären sie in Eritrea, und zwar auf die richtige Art und Weise. Mit authentischen Methoden, kulturellem Kontext und spielerischem Lernen machen wir die Sprache lebendig und zugänglich. Ihre Kinder werden nicht nur die Sprache lernen, sondern auch die Kultur und Traditionen verstehen!</p>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container">
+            <h2 id="featuresTitle" style="text-align: center; color: #667eea; font-size: 2rem; margin-bottom: 20px;">Warum uns wählen?</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🎯</div>
+                    <h3 id="feature1Title">Authentisches Lernen</h3>
+                    <p id="feature1Text">Lernen Sie Tigrinya so, wie es in Eritrea gesprochen wird, mit natürlicher Aussprache und kulturellem Kontext.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">👨‍👩‍👧‍👦</div>
+                    <h3 id="feature2Title">Familienfreundlich</h3>
+                    <p id="feature2Text">Unsere Programme sind für Kinder jeden Alters geeignet und machen das Lernen zu einem gemeinsamen Familienerlebnis.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🎮</div>
+                    <h3 id="feature3Title">Spielerisch & Interaktiv</h3>
+                    <p id="feature3Text">Mit Spielen, Videos und interaktiven Übungen macht das Tigrinya-Lernen richtig Spaß!</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📚</div>
+                    <h3 id="feature4Title">Umfassende Ressourcen</h3>
+                    <p id="feature4Text">Von Grundlagen bis Fortgeschritten - wir bieten alles, was Ihr Kind braucht, um fließend zu werden.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🌍</div>
+                    <h3 id="feature5Title">Kulturelle Verbindung</h3>
+                    <p id="feature5Text">Lernen Sie nicht nur die Sprache, sondern auch die reiche Kultur und Traditionen Eritreas kennen.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">⭐</div>
+                    <h3 id="feature6Title">Bewährte Methoden</h3>
+                    <p id="feature6Text">Unsere Lehrmethoden wurden entwickelt, um schnelle und nachhaltige Lernerfolge zu garantieren.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Notify Section -->
+    <section class="notify-section">
+        <div class="container">
+            <h2 id="notifyTitle" style="font-size: 2.5rem; margin-bottom: 20px;">Bereit anzufangen?</h2>
+            <p id="notifySubtitle" style="font-size: 1.2rem;">Melden Sie sich an und wir benachrichtigen Sie, wenn wir starten!</p>
+            
+            <div class="notify-form">
+                <h3 id="formTitle">Benachrichtigen Sie mich!</h3>
+                <form id="notificationForm">
+                    <div class="form-group">
+                        <label for="fullName" id="nameLabel">Vollständiger Name</label>
+                        <input type="text" id="fullName" name="fullName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email" id="emailLabel">E-Mail-Adresse</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <button type="submit" class="notify-btn" id="submitBtn">Benachrichtigen Sie mich</button>
+                </form>
+                <div class="success-message" id="successMessage"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Kung Fu Panda Section -->
+    <section class="kfp-section">
+        <div class="container">
+            <h2 id="kfpTitle">Sie kennen vielleicht unseren übersetzten Film für Kinder</h2>
+            <p id="kfpText">Kung Fu Panda - Jetzt auf Tigrinya!</p>
+            
+            <div class="slideshow-container">
+                <div class="slide active">
+                    <img src="kfp1.jpg" alt="Kung Fu Panda 1">
+                </div>
+                <div class="slide">
+                    <img src="kfp2.jpg" alt="Kung Fu Panda 2">
+                </div>
+                <div class="slide">
+                    <img src="kfp3.jpg" alt="Kung Fu Panda 3">
+                </div>
+            </div>
+            
+            <div class="dots">
+                <span class="dot active" onclick="currentSlide(0)"></span>
+                <span class="dot" onclick="currentSlide(1)"></span>
+                <span class="dot" onclick="currentSlide(2)"></span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p id="footerText">© 2024 Tigrinya Lernen. Alle Rechte vorbehalten.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Translations
+        const translations = {
+            de: {
+                bannerText: "Diese Seite ist auch auf Tigrinya und Englisch verfügbar",
+                logoText: "🎓 Tigrinya Lernen",
+                heroTitle: "Möchten Sie Ihrem Kind Tigrinya beibringen?",
+                heroText: "Haben Sie Schwierigkeiten, Ihrem Kind Tigrinya beizubringen, oder sind Sie frustriert, dass es nicht viele verfügbare Lerntools auf Tigrinya gibt? Wir haben die Lösung! Wir bringen Ihrem Kind Tigrinya bei, als wären sie in Eritrea, und zwar auf die richtige Art und Weise. Mit authentischen Methoden, kulturellem Kontext und spielerischem Lernen machen wir die Sprache lebendig und zugänglich. Ihre Kinder werden nicht nur die Sprache lernen, sondern auch die Kultur und Traditionen verstehen!",
+                featuresTitle: "Warum uns wählen?",
+                feature1Title: "Authentisches Lernen",
+                feature1Text: "Lernen Sie Tigrinya so, wie es in Eritrea gesprochen wird, mit natürlicher Aussprache und kulturellem Kontext.",
+                feature2Title: "Familienfreundlich",
+                feature2Text: "Unsere Programme sind für Kinder jeden Alters geeignet und machen das Lernen zu einem gemeinsamen Familienerlebnis.",
+                feature3Title: "Spielerisch & Interaktiv",
+                feature3Text: "Mit Spielen, Videos und interaktiven Übungen macht das Tigrinya-Lernen richtig Spaß!",
+                feature4Title: "Umfassende Ressourcen",
+                feature4Text: "Von Grundlagen bis Fortgeschritten - wir bieten alles, was Ihr Kind braucht, um fließend zu werden.",
+                feature5Title: "Kulturelle Verbindung",
+                feature5Text: "Lernen Sie nicht nur die Sprache, sondern auch die reiche Kultur und Traditionen Eritreas kennen.",
+                feature6Title: "Bewährte Methoden",
+                feature6Text: "Unsere Lehrmethoden wurden entwickelt, um schnelle und nachhaltige Lernerfolge zu garantieren.",
+                notifyTitle: "Bereit anzufangen?",
+                notifySubtitle: "Melden Sie sich an und wir benachrichtigen Sie, wenn wir starten!",
+                formTitle: "Benachrichtigen Sie mich!",
+                nameLabel: "Vollständiger Name",
+                emailLabel: "E-Mail-Adresse",
+                submitBtn: "Benachrichtigen Sie mich",
+                kfpTitle: "Sie kennen vielleicht unseren übersetzten Film für Kinder",
+                kfpText: "Kung Fu Panda - Jetzt auf Tigrinya!",
+                footerText: "© 2024 Tigrinya Lernen. Alle Rechte vorbehalten.",
+                successMessage: "Vielen Dank! Wir werden Sie bald benachrichtigen."
+            },
+            en: {
+                bannerText: "This page is also available in Tigrinya and German",
+                logoText: "🎓 Learn Tigrinya",
+                heroTitle: "Struggling to Teach Your Child Tigrinya?",
+                heroText: "Are you struggling to teach your child Tigrinya, or frustrated that there aren't many available learning tools in Tigrinya? We've got you covered! We'll teach them as if they were in Eritrea, the right way. With authentic methods, cultural context, and playful learning, we make the language come alive and accessible. Your children won't just learn the language—they'll understand the culture and traditions too!",
+                featuresTitle: "Why Choose Us?",
+                feature1Title: "Authentic Learning",
+                feature1Text: "Learn Tigrinya as it's spoken in Eritrea, with natural pronunciation and cultural context.",
+                feature2Title: "Family Friendly",
+                feature2Text: "Our programs are suitable for children of all ages and make learning a shared family experience.",
+                feature3Title: "Fun & Interactive",
+                feature3Text: "With games, videos, and interactive exercises, learning Tigrinya becomes truly enjoyable!",
+                feature4Title: "Comprehensive Resources",
+                feature4Text: "From basics to advanced - we offer everything your child needs to become fluent.",
+                feature5Title: "Cultural Connection",
+                feature5Text: "Learn not just the language, but also the rich culture and traditions of Eritrea.",
+                feature6Title: "Proven Methods",
+                feature6Text: "Our teaching methods are designed to guarantee fast and sustainable learning success.",
+                notifyTitle: "Ready to Get Started?",
+                notifySubtitle: "Sign up and we'll notify you when we launch!",
+                formTitle: "Notify Me!",
+                nameLabel: "Full Name",
+                emailLabel: "Email Address",
+                submitBtn: "Notify Me",
+                kfpTitle: "You May Know Our Translated Film for Kids",
+                kfpText: "Kung Fu Panda - Now in Tigrinya!",
+                footerText: "© 2024 Learn Tigrinya. All rights reserved.",
+                successMessage: "Thank you! We will notify you soon."
+            },
+            ti: {
+                bannerText: "እዚ ገጽ እዚ ብጀርመንን እንግሊዝን እውን ይርከብ",
+                logoText: "🎓 ትግርኛ ተማሃር",
+                heroTitle: "ንውላድኩም ትግርኛ ክትምህሩ ይጽግሙ ዲኹም?",
+                heroText: "ንውላድኩም ትግርኛ ክትምህሩ ትጽግሙ ዲኹም፡ ወይ ድማ ብትግርኛ ብዙሕ መሳርሒታት ትምህርቲ ስለ ዘይርከባ ተስፋ ቊሪጽኩም ዲኹም? ንሕና ኣለና! ከም ኣብ ኤርትራ ዝነበሩ ኮይኖም፡ ብቐጥታን ብሓቂ ኣገባብን ክነምህሮም ኢና። ብኣመሓዳድሪ ኣገባባት፡ ባህላዊ ትሕዝቶን ጸወታዊ ትምህርትን፡ ቋንቋ ህያው ተበጻሒን ምዉቕን ንገብሮ። ውላድኩም ቋንቋ ጥራይ ዘይኮነስ፡ ባህልን ባህርያትን እውን ክርድኡ እዮም!",
+                featuresTitle: "ስለምንታይ ንሕና ክትመርጹና?",
+                feature1Title: "ኣመሓዳሪ ትምህርቲ",
+                feature1Text: "ትግርኛ ከም ኣብ ኤርትራ ዝዝረብ፡ ብተፈጥራዊ ድምጺን ባህላዊ ትሕዝቶን ተማሃሩ።",
+                feature2Title: "ስድራቤታዊ",
+                feature2Text: "መደባትና ንኹሎም ዕድመ ቆልዑ ተሰማሚዑ፡ ትምህርቲ ናይ ስድራቤት ተመኩሮ ይገብሮ።",
+                feature3Title: "ጸወታን መስተንክርን",
+                feature3Text: "ብጸወታታት፡ ቪድዮታትን መስተንክራዊ ልምምዳትን፡ ትግርኛ ምምሃር ብሓቂ ባህ ይብል!",
+                feature4Title: "ዝተዓጀበ ጸጋታት",
+                feature4Text: "ካብ መሰረታዊ ክሳብ ምዕቡል - ውላድኩም ንምልኣት ዘድልዮ ኩሉ ነቕርብ።",
+                feature5Title: "ባህላዊ ምትእስሳር",
+                feature5Text: "ቋንቋ ጥራይ ዘይኮነስ፡ ሃብታም ባህልን ባህርያትን ኤርትራ እውን ተማሃሩ።",
+                feature6Title: "ዝተፈተነ ኣገባባት",
+                feature6Text: "ናይ ምምሃር ኣገባባትና ቀልጣፈን ዘላቒን ዓወት ንምርግጋጽ ተዳልዮም እዮም።",
+                notifyTitle: "ክትጅምር ድሉው ዲኻ?",
+                notifySubtitle: "ተመዝገብ እሞ ምስ ጀመርና ክንሕብረካ ኢና!",
+                formTitle: "ሕበረኒ!",
+                nameLabel: "ምሉእ ስም",
+                emailLabel: "ኢመይል ኣድራሻ",
+                submitBtn: "ሕበረኒ",
+                kfpTitle: "ንውላድኩም ዝተተርጐመ ፊልምና ክትፈልጡ ትኽእሉ",
+                kfpText: "ኩንግ ፉ ፓንዳ - ሕጂ ብትግርኛ!",
+                footerText: "© 2024 ትግርኛ ተማሃር። ኹሉ መሰላት ተሓሊጹ።",
+                successMessage: "የቐንየልና! ቀልጢፍና ክንሕብረካ ኢና።"
+            }
+        };
+
+        // Language Switcher
+        function switchLanguage(lang) {
+            const trans = translations[lang];
+            
+            // Update all text content
+            document.getElementById('bannerText').textContent = trans.bannerText;
+            document.getElementById('logoText').textContent = trans.logoText;
+            document.getElementById('heroTitle').textContent = trans.heroTitle;
+            document.getElementById('heroText').textContent = trans.heroText;
+            document.getElementById('featuresTitle').textContent = trans.featuresTitle;
+            document.getElementById('feature1Title').textContent = trans.feature1Title;
+            document.getElementById('feature1Text').textContent = trans.feature1Text;
+            document.getElementById('feature2Title').textContent = trans.feature2Title;
+            document.getElementById('feature2Text').textContent = trans.feature2Text;
+            document.getElementById('feature3Title').textContent = trans.feature3Title;
+            document.getElementById('feature3Text').textContent = trans.feature3Text;
+            document.getElementById('feature4Title').textContent = trans.feature4Title;
+            document.getElementById('feature4Text').textContent = trans.feature4Text;
+            document.getElementById('feature5Title').textContent = trans.feature5Title;
+            document.getElementById('feature5Text').textContent = trans.feature5Text;
+            document.getElementById('feature6Title').textContent = trans.feature6Title;
+            document.getElementById('feature6Text').textContent = trans.feature6Text;
+            document.getElementById('notifyTitle').textContent = trans.notifyTitle;
+            document.getElementById('notifySubtitle').textContent = trans.notifySubtitle;
+            document.getElementById('formTitle').textContent = trans.formTitle;
+            document.getElementById('nameLabel').textContent = trans.nameLabel;
+            document.getElementById('emailLabel').textContent = trans.emailLabel;
+            document.getElementById('submitBtn').textContent = trans.submitBtn;
+            document.getElementById('kfpTitle').textContent = trans.kfpTitle;
+            document.getElementById('kfpText').textContent = trans.kfpText;
+            document.getElementById('footerText').textContent = trans.footerText;
+
+            // Update active button
+            document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+
+            // Update HTML lang attribute
+            document.documentElement.lang = lang;
+        }
+
+        // Close Banner
+        function closeBanner() {
+            document.getElementById('languageBanner').classList.add('hidden');
+        }
+
+        // Slideshow
+        let slideIndex = 0;
+        
+        function showSlides() {
+            const slides = document.getElementsByClassName('slide');
+            const dots = document.getElementsByClassName('dot');
+            
+            for (let i = 0; i < slides.length; i++) {
+                slides[i].classList.remove('active');
+            }
+            
+            for (let i = 0; i < dots.length; i++) {
+                dots[i].classList.remove('active');
+            }
+            
+            slideIndex++;
+            if (slideIndex > slides.length) {
+                slideIndex = 1;
+            }
+            
+            slides[slideIndex - 1].classList.add('active');
+            dots[slideIndex - 1].classList.add('active');
+            
+            setTimeout(showSlides, 3000); // Change slide every 3 seconds
+        }
+
+        function currentSlide(n) {
+            slideIndex = n;
+            const slides = document.getElementsByClassName('slide');
+            const dots = document.getElementsByClassName('dot');
+            
+            for (let i = 0; i < slides.length; i++) {
+                slides[i].classList.remove('active');
+            }
+            
+            for (let i = 0; i < dots.length; i++) {
+                dots[i].classList.remove('active');
+            }
+            
+            slides[slideIndex].classList.add('active');
+            dots[slideIndex].classList.add('active');
+        }
+
+        // Start slideshow
+        showSlides();
+
+        // Form Submission
+        document.getElementById('notificationForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const fullName = document.getElementById('fullName').value;
+            const email = document.getElementById('email').value;
+            const currentLang = document.documentElement.lang || 'de';
+            
+            // Create mailto link
+            const subject = 'Tigrinya Learning - New Registration';
+            const body = `Name: ${fullName}%0D%0AEmail: ${email}`;
+            const mailtoLink = `mailto:filmon.brhane@students.fhnw.ch?subject=${subject}&body=${body}`;
+            
+            // Open email client
+            window.location.href = mailtoLink;
+            
+            // Show success message
+            const successMsg = document.getElementById('successMessage');
+            successMsg.textContent = translations[currentLang].successMessage;
+            successMsg.style.display = 'block';
+            
+            // Reset form
+            document.getElementById('notificationForm').reset();
+            
+            // Hide success message after 5 seconds
+            setTimeout(() => {
+                successMsg.style.display = 'none';
+            }, 5000);
+        });
+    </script>
+</body>
+</html>
