@@ -3,708 +3,587 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tigrinya für Kinder | Tigrinya Learning for Kids</title>
+    <title>INSY Übung – Bildfragen Quiz</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            overflow-x: hidden;
-        }
-
-        /* Language Notification Banner */
-        .language-banner {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 12px 20px;
-            text-align: center;
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            animation: slideDown 0.5s ease-out;
+            min-height: 100vh; padding: 20px;
         }
-
-        .language-banner.hidden {
-            display: none;
-        }
-
-        .banner-content {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 15px;
-            flex-wrap: wrap;
-        }
-
-        .close-banner {
-            background: rgba(255,255,255,0.2);
-            border: none;
-            color: white;
-            padding: 5px 10px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 18px;
-            transition: background 0.3s;
-        }
-
-        .close-banner:hover {
-            background: rgba(255,255,255,0.3);
-        }
-
-        @keyframes slideDown {
-            from {
-                transform: translateY(-100%);
-            }
-            to {
-                transform: translateY(0);
-            }
-        }
-
-        /* Header */
-        header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 20px 0;
-            position: sticky;
-            top: 48px;
-            z-index: 999;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-size: 1.8rem;
-            font-weight: bold;
-        }
-
-        .lang-switcher {
-            display: flex;
-            gap: 10px;
-        }
-
-        .lang-btn {
-            background: rgba(255,255,255,0.2);
-            border: 2px solid white;
-            color: white;
-            padding: 8px 16px;
-            border-radius: 25px;
-            cursor: pointer;
-            transition: all 0.3s;
-            font-weight: 600;
-        }
-
-        .lang-btn:hover, .lang-btn.active {
-            background: white;
-            color: #667eea;
-        }
-
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-            color: white;
-            padding: 100px 20px;
-            text-align: center;
-            margin-top: 48px;
-        }
-
-        .hero h1 {
-            font-size: 2.5rem;
-            margin-bottom: 20px;
-            animation: fadeInUp 1s ease-out;
-        }
-
-        .hero p {
-            font-size: 1.2rem;
-            max-width: 800px;
-            margin: 0 auto 30px;
-            animation: fadeInUp 1s ease-out 0.2s;
-            animation-fill-mode: both;
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* Features Section */
-        .features {
-            padding: 80px 20px;
-            background: #f8f9fa;
-        }
-
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-            margin-top: 50px;
-        }
-
-        .feature-card {
-            background: white;
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-            transition: transform 0.3s, box-shadow 0.3s;
-            text-align: center;
-        }
-
-        .feature-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-        }
-
-        .feature-icon {
-            font-size: 3rem;
-            margin-bottom: 20px;
-        }
-
-        .feature-card h3 {
-            color: #667eea;
-            margin-bottom: 15px;
-        }
-
-        /* Notify Section */
-        .notify-section {
-            padding: 80px 20px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            text-align: center;
-        }
-
-        .notify-form {
-            max-width: 500px;
-            margin: 40px auto 0;
-            background: white;
-            padding: 40px;
-            border-radius: 20px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
-        }
-
-        .notify-form h3 {
-            color: #667eea;
-            margin-bottom: 25px;
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-            text-align: left;
-        }
-
-        .form-group label {
-            display: block;
-            color: #333;
-            margin-bottom: 8px;
-            font-weight: 600;
-        }
-
-        .form-group input {
-            width: 100%;
-            padding: 12px;
-            border: 2px solid #e0e0e0;
-            border-radius: 8px;
-            font-size: 1rem;
-            transition: border-color 0.3s;
-        }
-
-        .form-group input:focus {
-            outline: none;
-            border-color: #667eea;
-        }
-
-        .notify-btn {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 15px 40px;
-            border: none;
-            border-radius: 30px;
-            font-size: 1.1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: transform 0.3s, box-shadow 0.3s;
-            width: 100%;
-        }
-
-        .notify-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
-        }
-
-        .success-message {
-            display: none;
-            background: #4caf50;
-            color: white;
-            padding: 15px;
-            border-radius: 8px;
-            margin-top: 20px;
-        }
-
-        /* Kung Fu Panda Section */
-        .kfp-section {
-            padding: 80px 20px;
-            background: #fff;
-            text-align: center;
-        }
-
-        .kfp-section h2 {
-            color: #667eea;
-            margin-bottom: 20px;
-            font-size: 2rem;
-        }
-
-        .kfp-section p {
-            font-size: 1.2rem;
-            color: #666;
-            margin-bottom: 40px;
-        }
-
-        .slideshow-container {
-            position: relative;
-            max-width: 800px;
-            margin: 0 auto;
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
-        }
-
-        .slide {
-            display: none;
-            animation: fade 1s;
-        }
-
-        .slide.active {
-            display: block;
-        }
-
-        .slide img {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
-
-        @keyframes fade {
-            from {opacity: 0.4}
-            to {opacity: 1}
-        }
-
-        .dots {
-            text-align: center;
-            padding: 20px 0;
-        }
-
-        .dot {
-            height: 15px;
-            width: 15px;
-            margin: 0 5px;
-            background-color: #bbb;
-            border-radius: 50%;
-            display: inline-block;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-
-        .dot.active {
-            background-color: #667eea;
-        }
-
-        /* Footer */
-        footer {
-            background: #333;
-            color: white;
-            text-align: center;
-            padding: 30px 20px;
-        }
-
-        /* Responsive */
+        .container { max-width: 900px; margin: 0 auto; background: white; border-radius: 20px; box-shadow: 0 20px 60px rgba(0,0,0,0.3); overflow: hidden; }
+        .header { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 30px; text-align: center; }
+        .header h1 { font-size: 2em; margin-bottom: 10px; }
+        .header p { font-size: 1.1em; opacity: 0.9; }
+        .progress-container { background: #f0f0f0; padding: 20px 30px; border-bottom: 2px solid #e0e0e0; }
+        .progress-bar { width: 100%; height: 30px; background: #e0e0e0; border-radius: 15px; overflow: hidden; position: relative; }
+        .progress-fill { height: 100%; background: linear-gradient(90deg, #667eea 0%, #764ba2 100%); transition: width 0.3s ease; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; }
+        .stats { display: flex; justify-content: space-around; margin-top: 15px; flex-wrap: wrap; gap: 10px; }
+        .stat { background: white; padding: 10px 20px; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        .stat-label { font-size: 0.85em; color: #666; margin-bottom: 5px; }
+        .stat-value { font-size: 1.5em; font-weight: bold; color: #667eea; }
+        .quiz-content { padding: 30px; }
+        .category-selector { display: flex; gap: 10px; margin-bottom: 30px; flex-wrap: wrap; }
+        .category-btn { padding: 12px 24px; border: 2px solid #667eea; background: white; color: #667eea; border-radius: 25px; cursor: pointer; font-size: 1em; transition: all 0.3s ease; font-weight: 600; }
+        .category-btn:hover { background: #667eea; color: white; transform: translateY(-2px); box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3); }
+        .category-btn.active { background: #667eea; color: white; }
+        .question-card { background: #f8f9fa; border-radius: 15px; padding: 30px; margin-bottom: 20px; box-shadow: 0 5px 15px rgba(0,0,0,0.08); }
+        .question-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; flex-wrap: wrap; gap: 10px; }
+        .question-number { background: #667eea; color: white; padding: 8px 16px; border-radius: 20px; font-weight: bold; }
+        .category-tag { background: #764ba2; color: white; padding: 8px 16px; border-radius: 20px; font-size: 0.85em; }
+        .question-text { font-size: 1.2em; color: #333; margin-bottom: 25px; line-height: 1.6; }
+        .options { display: flex; flex-direction: column; gap: 12px; }
+        .option { background: white; border: 2px solid #e0e0e0; border-radius: 12px; padding: 15px 20px; cursor: pointer; transition: all 0.3s ease; display: flex; align-items: center; gap: 15px; position: relative; }
+        .option:hover { border-color: #667eea; transform: translateX(5px); box-shadow: 0 5px 15px rgba(102, 126, 234, 0.2); }
+        .option-letter { background: #667eea; color: white; width: 35px; height: 35px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; flex-shrink: 0; }
+        .option.selected { border-color: #667eea; background: #f0f4ff; }
+        .option.correct { border-color: #28a745; background: #d4edda; }
+        .option.correct .option-letter { background: #28a745; }
+        .option.wrong { border-color: #dc3545; background: #f8d7da; }
+        .option.wrong .option-letter { background: #dc3545; }
+        .option-checkbox { position: absolute; right: 20px; width: 25px; height: 25px; }
+        .fill-in-the-blank-container { display: flex; flex-direction: column; gap: 15px; }
+        .fill-in-the-blank-input { width: 100%; padding: 10px; border: 2px solid #ccc; border-radius: 8px; font-size: 1.1em; transition: border-color 0.3s; }
+        .fill-in-the-blank-input:focus { border-color: #667eea; outline: none; }
+        .fill-in-the-blank-wrapper { display: flex; align-items: center; gap: 10px; }
+        .fill-in-the-blank-label { font-weight: bold; color: #333; min-width: 160px; }
+        .answer-section { margin-top: 20px; padding: 20px; background: white; border-radius: 12px; border-left: 4px solid #667eea; }
+        .answer-section.show { display: block; }
+        .answer-section.hide { display: none; }
+        .answer-header { font-weight: bold; color: #667eea; margin-bottom: 10px; font-size: 1.1em; }
+        .answer-text { color: #333; line-height: 1.6; }
+        .button-group { display: flex; gap: 15px; margin-top: 20px; flex-wrap: wrap; }
+        .btn { padding: 12px 30px; border: none; border-radius: 25px; cursor: pointer; font-size: 1em; font-weight: 600; transition: all 0.3s ease; flex: 1; min-width: 150px; }
+        .btn-primary { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; }
+        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4); }
+        .btn-secondary { background: #6c757d; color: white; }
+        .btn-secondary:hover { background: #545b62; transform: translateY(-2px); }
+        .btn-success { background: #28a745; color: white; }
+        .btn-success:hover { background: #218838; transform: translateY(-2px); }
+        .result-summary { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 40px; border-radius: 15px; text-align: center; margin-top: 30px; }
+        .result-summary h2 { font-size: 2.5em; margin-bottom: 20px; }
+        .result-score { font-size: 4em; font-weight: bold; margin: 20px 0; }
+        .result-details { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 20px; margin-top: 30px; }
+        .result-detail { background: rgba(255,255,255,0.2); padding: 20px; border-radius: 12px; }
+        .result-detail-value { font-size: 2em; font-weight: bold; margin-top: 10px; }
+        .footer { background: #f8f9fa; padding: 20px; text-align: center; color: #666; border-top: 2px solid #e0e0e0; }
         @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2rem;
-            }
-
-            .hero p {
-                font-size: 1rem;
-            }
-
-            .logo {
-                font-size: 1.4rem;
-            }
-
-            .lang-btn {
-                padding: 6px 12px;
-                font-size: 0.9rem;
-            }
-
-            .notify-form {
-                padding: 30px 20px;
-            }
-
-            .banner-content {
-                font-size: 0.9rem;
-            }
+            .header h1 { font-size: 1.5em; }
+            .question-text { font-size: 1.1em; }
+            .btn { min-width: 100%; }
+            .result-score { font-size: 3em; }
         }
+        .fade-in { animation: fadeIn 0.5s ease-in; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px);} to { opacity: 1; transform: translateY(0);} }
+        .fill-in-the-blank-input.correct-answer { border-color: #28a745; background-color: #d4edda; }
+        .fill-in-the-blank-input.wrong-answer { border-color: #dc3545; background-color: #f8d7da; }
     </style>
 </head>
 <body>
-    <!-- Language Banner -->
-    <div class="language-banner" id="languageBanner">
-        <div class="banner-content">
-            <span id="bannerText">Diese Seite ist auch auf Tigrinya und Englisch verfügbar</span>
-            <button class="close-banner" onclick="closeBanner()">×</button>
+    <div class="container">
+        <div class="header">
+            <h1>🎓 INSY – Quiz aus deinen Bildern</h1>
+            <p>Informationssysteme, OS-Grundlagen, SSH, Boot/systemd, Dateirechte</p>
+        </div>
+
+        <div class="progress-container">
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill">0%</div>
+            </div>
+            <div class="stats">
+                <div class="stat">
+                    <div class="stat-label">Fortschritt</div>
+                    <div class="stat-value" id="progressText">0/0</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-label">Richtig</div>
+                    <div class="stat-value" id="correctCount" style="color: #28a745;">0</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-label">Falsch</div>
+                    <div class="stat-value" id="wrongCount" style="color: #dc3545;">0</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-label">Erfolgsrate</div>
+                    <div class="stat-value" id="successRate">0%</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="quiz-content">
+            <div class="category-selector" id="categorySelector"></div>
+            <div id="quizContainer"></div>
+
+            <div class="button-group">
+                <button class="btn btn-secondary" id="prevBtn" style="display: none;">⬅️ Vorherige Frage</button>
+                <button class="btn btn-primary" id="nextBtn">Nächste Frage ➡️</button>
+                <button class="btn btn-success" id="finishBtn" style="display: none;">✅ Quiz Beenden</button>
+                <button class="btn btn-primary" id="checkAnswerBtn">Antwort Überprüfen ✔️</button>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>💡 MC = Mehrfachauswahl möglich. R/F = Richtig/Falsch. FTB = Lückentext.</p>
+            <p style="margin-top: 10px;">FHNW – INSY 2025</p>
         </div>
     </div>
 
-    <!-- Header -->
-    <header>
-        <nav class="container">
-            <div class="logo" id="logoText">🎓 Tigrinya Lernen</div>
-            <div class="lang-switcher">
-                <button class="lang-btn active" onclick="switchLanguage('de')">DE</button>
-                <button class="lang-btn" onclick="switchLanguage('en')">EN</button>
-                <button class="lang-btn" onclick="switchLanguage('ti')">ትግ</button>
-            </div>
-        </nav>
-    </header>
-
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="container">
-            <h1 id="heroTitle">Möchten Sie Ihrem Kind Tigrinya beibringen?</h1>
-            <p id="heroText">Haben Sie Schwierigkeiten, Ihrem Kind Tigrinya beizubringen, oder sind Sie frustriert, dass es nicht viele verfügbare Lerntools auf Tigrinya gibt? Wir haben die Lösung! Wir bringen Ihrem Kind Tigrinya bei, als wären sie in Eritrea, und zwar auf die richtige Art und Weise. Mit authentischen Methoden, kulturellem Kontext und spielerischem Lernen machen wir die Sprache lebendig und zugänglich. Ihre Kinder werden nicht nur die Sprache lernen, sondern auch die Kultur und Traditionen verstehen!</p>
-        </div>
-    </section>
-
-    <!-- Features Section -->
-    <section class="features">
-        <div class="container">
-            <h2 id="featuresTitle" style="text-align: center; color: #667eea; font-size: 2rem; margin-bottom: 20px;">Warum uns wählen?</h2>
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">🎯</div>
-                    <h3 id="feature1Title">Authentisches Lernen</h3>
-                    <p id="feature1Text">Lernen Sie Tigrinya so, wie es in Eritrea gesprochen wird, mit natürlicher Aussprache und kulturellem Kontext.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">👨‍👩‍👧‍👦</div>
-                    <h3 id="feature2Title">Familienfreundlich</h3>
-                    <p id="feature2Text">Unsere Programme sind für Kinder jeden Alters geeignet und machen das Lernen zu einem gemeinsamen Familienerlebnis.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">🎮</div>
-                    <h3 id="feature3Title">Spielerisch & Interaktiv</h3>
-                    <p id="feature3Text">Mit Spielen, Videos und interaktiven Übungen macht das Tigrinya-Lernen richtig Spaß!</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">📚</div>
-                    <h3 id="feature4Title">Umfassende Ressourcen</h3>
-                    <p id="feature4Text">Von Grundlagen bis Fortgeschritten - wir bieten alles, was Ihr Kind braucht, um fließend zu werden.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">🌍</div>
-                    <h3 id="feature5Title">Kulturelle Verbindung</h3>
-                    <p id="feature5Text">Lernen Sie nicht nur die Sprache, sondern auch die reiche Kultur und Traditionen Eritreas kennen.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">⭐</div>
-                    <h3 id="feature6Title">Bewährte Methoden</h3>
-                    <p id="feature6Text">Unsere Lehrmethoden wurden entwickelt, um schnelle und nachhaltige Lernerfolge zu garantieren.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Notify Section -->
-    <section class="notify-section">
-        <div class="container">
-            <h2 id="notifyTitle" style="font-size: 2.5rem; margin-bottom: 20px;">Bereit anzufangen?</h2>
-            <p id="notifySubtitle" style="font-size: 1.2rem;">Melden Sie sich an und wir benachrichtigen Sie, wenn wir starten!</p>
-            
-            <div class="notify-form">
-                <h3 id="formTitle">Benachrichtigen Sie mich!</h3>
-                <form id="notificationForm">
-                    <div class="form-group">
-                        <label for="fullName" id="nameLabel">Vollständiger Name</label>
-                        <input type="text" id="fullName" name="fullName" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="email" id="emailLabel">E-Mail-Adresse</label>
-                        <input type="email" id="email" name="email" required>
-                    </div>
-                    <button type="submit" class="notify-btn" id="submitBtn">Benachrichtigen Sie mich</button>
-                </form>
-                <div class="success-message" id="successMessage"></div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Kung Fu Panda Section -->
-    <section class="kfp-section">
-        <div class="container">
-            <h2 id="kfpTitle">Sie kennen vielleicht unseren übersetzten Film für Kinder</h2>
-            <p id="kfpText">Kung Fu Panda - Jetzt auf Tigrinya!</p>
-            
-            <div class="slideshow-container">
-                <div class="slide active">
-                    <img src="kfp1.jpg" alt="Kung Fu Panda 1">
-                </div>
-                <div class="slide">
-                    <img src="kfp2.jpg" alt="Kung Fu Panda 2">
-                </div>
-                <div class="slide">
-                    <img src="kfp3.jpg" alt="Kung Fu Panda 3">
-                </div>
-            </div>
-            
-            <div class="dots">
-                <span class="dot active" onclick="currentSlide(0)"></span>
-                <span class="dot" onclick="currentSlide(1)"></span>
-                <span class="dot" onclick="currentSlide(2)"></span>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <p id="footerText">© 2024 Tigrinya Lernen. Alle Rechte vorbehalten.</p>
-        </div>
-    </footer>
-
     <script>
-        // Translations
-        const translations = {
-            de: {
-                bannerText: "Diese Seite ist auch auf Tigrinya und Englisch verfügbar",
-                logoText: "🎓 Tigrinya Lernen",
-                heroTitle: "Möchten Sie Ihrem Kind Tigrinya beibringen?",
-                heroText: "Haben Sie Schwierigkeiten, Ihrem Kind Tigrinya beizubringen, oder sind Sie frustriert, dass es nicht viele verfügbare Lerntools auf Tigrinya gibt? Wir haben die Lösung! Wir bringen Ihrem Kind Tigrinya bei, als wären sie in Eritrea, und zwar auf die richtige Art und Weise. Mit authentischen Methoden, kulturellem Kontext und spielerischem Lernen machen wir die Sprache lebendig und zugänglich. Ihre Kinder werden nicht nur die Sprache lernen, sondern auch die Kultur und Traditionen verstehen!",
-                featuresTitle: "Warum uns wählen?",
-                feature1Title: "Authentisches Lernen",
-                feature1Text: "Lernen Sie Tigrinya so, wie es in Eritrea gesprochen wird, mit natürlicher Aussprache und kulturellem Kontext.",
-                feature2Title: "Familienfreundlich",
-                feature2Text: "Unsere Programme sind für Kinder jeden Alters geeignet und machen das Lernen zu einem gemeinsamen Familienerlebnis.",
-                feature3Title: "Spielerisch & Interaktiv",
-                feature3Text: "Mit Spielen, Videos und interaktiven Übungen macht das Tigrinya-Lernen richtig Spaß!",
-                feature4Title: "Umfassende Ressourcen",
-                feature4Text: "Von Grundlagen bis Fortgeschritten - wir bieten alles, was Ihr Kind braucht, um fließend zu werden.",
-                feature5Title: "Kulturelle Verbindung",
-                feature5Text: "Lernen Sie nicht nur die Sprache, sondern auch die reiche Kultur und Traditionen Eritreas kennen.",
-                feature6Title: "Bewährte Methoden",
-                feature6Text: "Unsere Lehrmethoden wurden entwickelt, um schnelle und nachhaltige Lernerfolge zu garantieren.",
-                notifyTitle: "Bereit anzufangen?",
-                notifySubtitle: "Melden Sie sich an und wir benachrichtigen Sie, wenn wir starten!",
-                formTitle: "Benachrichtigen Sie mich!",
-                nameLabel: "Vollständiger Name",
-                emailLabel: "E-Mail-Adresse",
-                submitBtn: "Benachrichtigen Sie mich",
-                kfpTitle: "Sie kennen vielleicht unseren übersetzten Film für Kinder",
-                kfpText: "Kung Fu Panda - Jetzt auf Tigrinya!",
-                footerText: "© 2024 Tigrinya Lernen. Alle Rechte vorbehalten.",
-                successMessage: "Vielen Dank! Wir werden Sie bald benachrichtigen."
-            },
-            en: {
-                bannerText: "This page is also available in Tigrinya and German",
-                logoText: "🎓 Learn Tigrinya",
-                heroTitle: "Struggling to Teach Your Child Tigrinya?",
-                heroText: "Are you struggling to teach your child Tigrinya, or frustrated that there aren't many available learning tools in Tigrinya? We've got you covered! We'll teach them as if they were in Eritrea, the right way. With authentic methods, cultural context, and playful learning, we make the language come alive and accessible. Your children won't just learn the language—they'll understand the culture and traditions too!",
-                featuresTitle: "Why Choose Us?",
-                feature1Title: "Authentic Learning",
-                feature1Text: "Learn Tigrinya as it's spoken in Eritrea, with natural pronunciation and cultural context.",
-                feature2Title: "Family Friendly",
-                feature2Text: "Our programs are suitable for children of all ages and make learning a shared family experience.",
-                feature3Title: "Fun & Interactive",
-                feature3Text: "With games, videos, and interactive exercises, learning Tigrinya becomes truly enjoyable!",
-                feature4Title: "Comprehensive Resources",
-                feature4Text: "From basics to advanced - we offer everything your child needs to become fluent.",
-                feature5Title: "Cultural Connection",
-                feature5Text: "Learn not just the language, but also the rich culture and traditions of Eritrea.",
-                feature6Title: "Proven Methods",
-                feature6Text: "Our teaching methods are designed to guarantee fast and sustainable learning success.",
-                notifyTitle: "Ready to Get Started?",
-                notifySubtitle: "Sign up and we'll notify you when we launch!",
-                formTitle: "Notify Me!",
-                nameLabel: "Full Name",
-                emailLabel: "Email Address",
-                submitBtn: "Notify Me",
-                kfpTitle: "You May Know Our Translated Film for Kids",
-                kfpText: "Kung Fu Panda - Now in Tigrinya!",
-                footerText: "© 2024 Learn Tigrinya. All rights reserved.",
-                successMessage: "Thank you! We will notify you soon."
-            },
-            ti: {
-                bannerText: "እዚ ገጽ እዚ ብጀርመንን እንግሊዝን እውን ይርከብ",
-                logoText: "🎓 ትግርኛ ተማሃር",
-                heroTitle: "ንውላድኩም ትግርኛ ክትምህሩ ይጽግሙ ዲኹም?",
-                heroText: "ንውላድኩም ትግርኛ ክትምህሩ ትጽግሙ ዲኹም፡ ወይ ድማ ብትግርኛ ብዙሕ መሳርሒታት ትምህርቲ ስለ ዘይርከባ ተስፋ ቊሪጽኩም ዲኹም? ንሕና ኣለና! ከም ኣብ ኤርትራ ዝነበሩ ኮይኖም፡ ብቐጥታን ብሓቂ ኣገባብን ክነምህሮም ኢና። ብኣመሓዳድሪ ኣገባባት፡ ባህላዊ ትሕዝቶን ጸወታዊ ትምህርትን፡ ቋንቋ ህያው ተበጻሒን ምዉቕን ንገብሮ። ውላድኩም ቋንቋ ጥራይ ዘይኮነስ፡ ባህልን ባህርያትን እውን ክርድኡ እዮም!",
-                featuresTitle: "ስለምንታይ ንሕና ክትመርጹና?",
-                feature1Title: "ኣመሓዳሪ ትምህርቲ",
-                feature1Text: "ትግርኛ ከም ኣብ ኤርትራ ዝዝረብ፡ ብተፈጥራዊ ድምጺን ባህላዊ ትሕዝቶን ተማሃሩ።",
-                feature2Title: "ስድራቤታዊ",
-                feature2Text: "መደባትና ንኹሎም ዕድመ ቆልዑ ተሰማሚዑ፡ ትምህርቲ ናይ ስድራቤት ተመኩሮ ይገብሮ።",
-                feature3Title: "ጸወታን መስተንክርን",
-                feature3Text: "ብጸወታታት፡ ቪድዮታትን መስተንክራዊ ልምምዳትን፡ ትግርኛ ምምሃር ብሓቂ ባህ ይብል!",
-                feature4Title: "ዝተዓጀበ ጸጋታት",
-                feature4Text: "ካብ መሰረታዊ ክሳብ ምዕቡል - ውላድኩም ንምልኣት ዘድልዮ ኩሉ ነቕርብ።",
-                feature5Title: "ባህላዊ ምትእስሳር",
-                feature5Text: "ቋንቋ ጥራይ ዘይኮነስ፡ ሃብታም ባህልን ባህርያትን ኤርትራ እውን ተማሃሩ።",
-                feature6Title: "ዝተፈተነ ኣገባባት",
-                feature6Text: "ናይ ምምሃር ኣገባባትና ቀልጣፈን ዘላቒን ዓወት ንምርግጋጽ ተዳልዮም እዮም።",
-                notifyTitle: "ክትጅምር ድሉው ዲኻ?",
-                notifySubtitle: "ተመዝገብ እሞ ምስ ጀመርና ክንሕብረካ ኢና!",
-                formTitle: "ሕበረኒ!",
-                nameLabel: "ምሉእ ስም",
-                emailLabel: "ኢመይል ኣድራሻ",
-                submitBtn: "ሕበረኒ",
-                kfpTitle: "ንውላድኩም ዝተተርጐመ ፊልምና ክትፈልጡ ትኽእሉ",
-                kfpText: "ኩንግ ፉ ፓንዳ - ሕጂ ብትግርኛ!",
-                footerText: "© 2024 ትግርኛ ተማሃር። ኹሉ መሰላት ተሓሊጹ።",
-                successMessage: "የቐንየልና! ቀልጢፍና ክንሕብረካ ኢና።"
+        // Fragen aus den hochgeladenen Bildern
+        const questionsData = [
+            // 1) Informationssystem (Bild 1)
+            { type: 'SC', id: 1, category: 'info', categoryName: 'Informationssysteme', question: 'Welche Aussage beschreibt am besten ein computergestütztes Informationssystem?', options: [
+                'Ein Informationssystem ist ein sozio-technisches System, das die Erfassung, Speicherung, Übertragung und/oder Transformation von Informationen durch Informationstechnik teilweise automatisiert.',
+                'Ein Informationssystem ist ein organisatorisches System, das Informationen ausschließlich manuell verarbeitet.',
+                'Ein Informationssystem besteht ausschließlich aus Hardware und Software zur Datenverarbeitung.',
+                'Ein Informationssystem ist ein technisches System, das ausschließlich für die automatische Datenspeicherung verwendet wird.'
+            ], correct: 0, explanation: 'Aus der Vorlesung: sozio-technisches System mit teilweise automatisierter Verarbeitung durch IT.' },
+
+            // 2) SSH first-connection Warnung (Bild 2)
+            { type: 'MC', id: 2, category: 'ssh', categoryName: 'SSH & Sicherheit', question: 'SSH-Meldung „The authenticity of host ... can’t be established.“ – welche Aussagen sind WAHR?', options: [
+                'Hinweis, dass man sich von diesem Rechner noch nie mit diesem Server verbunden hat.',
+                'Bei „yes“ wird der Host-Key dauerhaft als vertrauenswürdig gespeichert (future Verbindungen fragen nicht mehr).',
+                'Die Warnung erscheint, weil der SSH-Server ein schwaches Passwort hat.',
+                'Dauerhafte Speicherung der Host-Keys erfolgt in ~/.ssh/known_hosts.',
+                'Die Meldung bedeutet, der Client hat den Server bereits als vertrauenswürdig gespeichert.'
+            ], correct: [0,1,3], explanation: 'Unbekannter Host-Key. Speicherung in ~/.ssh/known_hosts. Passwort-Stärke ist hier irrelevant.' },
+
+            // 3–11) OS Wahr/Falsch (Bild 3)
+            { type: 'RF', id: 3, category: 'os', categoryName: 'OS-Grundlagen', question: '(R/F) Der Betriebssystem-Kernel benötigt besonderen Schutz.', options: ['Richtig', 'Falsch'], correct: 0, explanation: 'Kernel läuft mit höchsten Rechten.' },
+            { type: 'RF', id: 4, category: 'os', categoryName: 'OS-Grundlagen', question: '(R/F) Die Version/Art des Betriebssystems hat keinen Einfluss auf die darauf laufende Software.', options: ['Richtig', 'Falsch'], correct: 1, explanation: 'Doch, ABI/API, Bibliotheken etc. ändern sich.' },
+            { type: 'RF', id: 5, category: 'os', categoryName: 'OS-Grundlagen', question: '(R/F) Benutzer, Rollen und Rechte werden durch das Betriebssystem geregelt.', options: ['Richtig', 'Falsch'], correct: 0, explanation: 'Kernaufgabe des OS.' },
+            { type: 'RF', id: 6, category: 'os', categoryName: 'OS-Grundlagen', question: '(R/F) Linux ist ein vollständiges Betriebssystem.', options: ['Richtig', 'Falsch'], correct: 1, explanation: 'Linux = Kernel; ein komplettes OS ist z. B. GNU/Linux.' },
+            { type: 'RF', id: 7, category: 'os', categoryName: 'OS-Grundlagen', question: '(R/F) Programme müssen speziell für die Hardware des Computers entwickelt werden.', options: ['Richtig', 'Falsch'], correct: 1, explanation: 'Nicht speziell für jede Hardware; Portierung/Architektur ja, aber nicht pro Gerät.' },
+            { type: 'RF', id: 8, category: 'os', categoryName: 'OS-Grundlagen', question: '(R/F) Ein Hypervisor wird im Virtualisierungskontext auch als „Gast“ bezeichnet.', options: ['Richtig', 'Falsch'], correct: 1, explanation: 'Der Hypervisor ist „Host“. „Guest“ sind die VMs.' },
+            { type: 'RF', id: 9, category: 'os', categoryName: 'OS-Grundlagen', question: '(R/F) Ein Betriebssystem verwaltet die Ressourcen eines Computers.', options: ['Richtig', 'Falsch'], correct: 0, explanation: 'CPU, RAM, Geräte, Prozesse etc.' },
+            { type: 'RF', id: 10, category: 'os', categoryName: 'OS-Grundlagen', question: '(R/F) Der Kernel bringt eine Shell mit.', options: ['Richtig', 'Falsch'], correct: 1, explanation: 'Shell ist Userspace-Programm.' },
+            { type: 'RF', id: 11, category: 'os', categoryName: 'OS-Grundlagen', question: '(R/F) Linux ist Open Source.', options: ['Richtig', 'Falsch'], correct: 0, explanation: 'Ja, GPL.' },
+
+            // 12) Schalenmodell (Bild 4)
+            { type: 'FTB', id: 12, category: 'os', categoryName: 'OS-Grundlagen', question: 'Schalenmodell (außen → Mitte → innen): Trage die drei Schichten ein.', correct: [
+                ['Anwendungsprogramme','Anwendungen','User-Programme'],
+                ['Kernel'],
+                ['Hardware']
+            ], placeholder: ['Außen', 'Mitte', 'Innen'], explanation: 'Außen: Anwendungsprogramme, Mitte: Kernel, Innen: Hardware.' },
+
+            // 13) Boot-Prozess Reihenfolge (Bild 5)
+            { type: 'FTB', id: 13, category: 'boot', categoryName: 'Boot-Prozess', question: 'Boot-Kette: _______ → Bootloader → _______ (+initramfs) → _______ (PID 1).', correct: [
+                ['Firmware','BIOS','UEFI','Firmware/BIOS/UEFI'],
+                ['Kernel','Linux-Kernel','Kernel+initramfs','Linux-Kernel und initramfs'],
+                ['systemd','Init-System','SysVinit','PID 1']
+            ], placeholder: ['(1) Firmware', '(2) Kernel', '(3) Init-System'], explanation: 'Firmware/BIOS/UEFI → Bootloader (z. B. GRUB) → Kernel (+initramfs) → systemd.' },
+
+            // 14–19) SSH Fakten (Bild 6)
+            { type: 'RF', id: 14, category: 'ssh', categoryName: 'SSH & Sicherheit', question: '(R/F) Der Standardport für SSH ist 5432.', options: ['Richtig', 'Falsch'], correct: 1, explanation: 'SSH → Port 22. 5432 ist PostgreSQL.' },
+            { type: 'RF', id: 15, category: 'ssh', categoryName: 'SSH & Sicherheit', question: '(R/F) Die Datei authorized_keys auf dem Server verwaltet die zugelassenen Public Keys der Benutzer.', options: ['Richtig', 'Falsch'], correct: 0, explanation: 'Genau dafür ist sie da.' },
+            { type: 'RF', id: 16, category: 'ssh', categoryName: 'SSH & Sicherheit', question: '(R/F) SSH-Keys bieten sicherheitstechnisch keine Vorteile gegenüber Passwörtern.', options: ['Richtig', 'Falsch'], correct: 1, explanation: 'Falsch: deutlich sicherer (Phishing-resistenter, kryptographisch stärker).' },
+            { type: 'RF', id: 17, category: 'ssh', categoryName: 'SSH & Sicherheit', question: '(R/F) Unbekannte Schlüssel werden bei Login automatisch zu authorized_keys hinzugefügt.', options: ['Richtig', 'Falsch'], correct: 1, explanation: 'Nein, Keys müssen manuell/hinterlegt werden.' },
+            { type: 'RF', id: 18, category: 'ssh', categoryName: 'SSH & Sicherheit', question: '(R/F) Über SSH übertragene Daten sind grundsätzlich verschlüsselt.', options: ['Richtig', 'Falsch'], correct: 0, explanation: 'Ja, Transport ist verschlüsselt.' },
+            { type: 'RF', id: 19, category: 'ssh', categoryName: 'SSH & Sicherheit', question: '(R/F) Der private SSH-Schlüssel (z. B. id_rsa oder id_ed25519) darf nie weitergegeben werden.', options: ['Richtig', 'Falsch'], correct: 0, explanation: 'Private Keys bleiben privat.' },
+
+            // 20) Dateirechte (Bild 7)
+            { type: 'MC', id: 20, category: 'perm', categoryName: 'Dateirechte', question: 'Welche Zuordnungen Oktal → Symbol sind korrekt?', options: [
+                '711 → rwx--x--x',
+                '644 → rw-r--r--',
+                '755 → rwxr-xr-x',
+                '777 → rwxrwxrwx',
+                '700 → rwx------'
+            ], correct: [0,1,2,3,4], explanation: 'Alle fünf Paare sind korrekt.' },
+
+            // 21) systemctl-Symlink (Bild 8)
+            { type: 'SC', id: 21, category: 'boot', categoryName: 'Boot-Prozess', question: 'Welcher Befehl ist heute oft als Symlink auf systemctl implementiert?', options: [
+                'chmod','mount','reboot','ifconfig'
+            ], correct: 2, explanation: 'Viele Klassiker (reboot/poweroff/halt) verweisen auf systemctl.' },
+
+            // 22) GRUB Aufgabe (Bild 9)
+            { type: 'SC', id: 22, category: 'boot', categoryName: 'Boot-Prozess', question: 'Primäre Aufgabe von GRUB im Linux-Bootprozess?', options: [
+                'POST der Hardware ausführen.',
+                'Root-Partition permanent read-write remounten.',
+                'Kernel (und initramfs) von Datenträger laden und an ihn übergeben.',
+                'Alle Systemdienste (PID 1) starten und verwalten.'
+            ], correct: 2, explanation: 'GRUB lädt Kernel+initramfs in den Speicher und übergibt.' },
+
+            // 23) initramfs Zweck (Bild 10)
+            { type: 'SC', id: 23, category: 'boot', categoryName: 'Boot-Prozess', question: 'Hauptzweck von initramfs?', options: [
+                'Nur bei verschlüsselten Datenträgern benötigt.',
+                'Enthält komplettes Userspace-System – Root-FS wird nicht mehr benötigt.',
+                'Bringt frühe Treiber/Logik mit, findet & mountet das Root-Dateisystem und startet den eigentlichen Init-Prozess.',
+                'Ersetzt den Bootloader und lädt direkt die Firmware.'
+            ], correct: 2, explanation: 'initramfs = temporäres Root mit Treibern, mountet Root-FS und startet Init.' }
+        ];
+
+        let currentQuestionIndex = 0;
+        let userAnswers = {};
+        let filteredQuestions = [];
+        let currentCategory = 'all';
+
+        function initializeQuiz(category) {
+            currentCategory = category;
+            if (category === 'all') {
+                filteredQuestions = questionsData.slice();
+            } else {
+                filteredQuestions = questionsData.filter(q => q.category === category);
             }
-        };
+            if (currentQuestionIndex >= filteredQuestions.length) currentQuestionIndex = 0;
 
-        // Language Switcher
-        function switchLanguage(lang) {
-            const trans = translations[lang];
-            
-            // Update all text content
-            document.getElementById('bannerText').textContent = trans.bannerText;
-            document.getElementById('logoText').textContent = trans.logoText;
-            document.getElementById('heroTitle').textContent = trans.heroTitle;
-            document.getElementById('heroText').textContent = trans.heroText;
-            document.getElementById('featuresTitle').textContent = trans.featuresTitle;
-            document.getElementById('feature1Title').textContent = trans.feature1Title;
-            document.getElementById('feature1Text').textContent = trans.feature1Text;
-            document.getElementById('feature2Title').textContent = trans.feature2Title;
-            document.getElementById('feature2Text').textContent = trans.feature2Text;
-            document.getElementById('feature3Title').textContent = trans.feature3Title;
-            document.getElementById('feature3Text').textContent = trans.feature3Text;
-            document.getElementById('feature4Title').textContent = trans.feature4Title;
-            document.getElementById('feature4Text').textContent = trans.feature4Text;
-            document.getElementById('feature5Title').textContent = trans.feature5Title;
-            document.getElementById('feature5Text').textContent = trans.feature5Text;
-            document.getElementById('feature6Title').textContent = trans.feature6Title;
-            document.getElementById('feature6Text').textContent = trans.feature6Text;
-            document.getElementById('notifyTitle').textContent = trans.notifyTitle;
-            document.getElementById('notifySubtitle').textContent = trans.notifySubtitle;
-            document.getElementById('formTitle').textContent = trans.formTitle;
-            document.getElementById('nameLabel').textContent = trans.nameLabel;
-            document.getElementById('emailLabel').textContent = trans.emailLabel;
-            document.getElementById('submitBtn').textContent = trans.submitBtn;
-            document.getElementById('kfpTitle').textContent = trans.kfpTitle;
-            document.getElementById('kfpText').textContent = trans.kfpText;
-            document.getElementById('footerText').textContent = trans.footerText;
-
-            // Update active button
-            document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
-            event.target.classList.add('active');
-
-            // Update HTML lang attribute
-            document.documentElement.lang = lang;
+            if (filteredQuestions.length === 0) {
+                document.getElementById('quizContainer').innerHTML = '<p style="text-align: center; margin-top: 50px; font-size: 1.2em;">Keine Fragen in dieser Kategorie.</p>';
+                document.getElementById('prevBtn').style.display = 'none';
+                document.getElementById('nextBtn').style.display = 'none';
+                document.getElementById('finishBtn').style.display = 'none';
+                document.getElementById('checkAnswerBtn').style.display = 'none';
+                updateProgress();
+                return;
+            }
+            renderQuestion();
+            updateProgress();
+            updateNavigationButtons();
         }
 
-        // Close Banner
-        function closeBanner() {
-            document.getElementById('languageBanner').classList.add('hidden');
+        function updateProgress() {
+            const totalQuestions = filteredQuestions.length;
+            const inScopeIds = new Set(filteredQuestions.map(q => String(q.id)));
+            const answersInScope = Object.keys(userAnswers)
+                .filter(id => inScopeIds.has(String(id)) && userAnswers[id])
+                .map(id => userAnswers[id]);
+
+            const answeredQuestions = answersInScope.filter(a => a.isAnswered).length;
+            const correctCount = answersInScope.filter(a => a.isCorrect).length;
+            const wrongCount = answersInScope.filter(a => a.isAnswered && !a.isCorrect).length;
+
+            const successRate = answeredQuestions > 0 ? ((correctCount / answeredQuestions) * 100).toFixed(0) : 0;
+            const progress = (answeredQuestions / (totalQuestions || 1)) * 100;
+
+            document.getElementById('progressFill').style.width = `${progress}%`;
+            document.getElementById('progressFill').textContent = `${progress.toFixed(0)}%`;
+            document.getElementById('progressText').textContent = `${answeredQuestions}/${totalQuestions}`;
+            document.getElementById('correctCount').textContent = correctCount;
+            document.getElementById('wrongCount').textContent = wrongCount;
+            document.getElementById('successRate').textContent = `${successRate}%`;
+
+            if (answeredQuestions === totalQuestions && totalQuestions > 0) {
+                document.getElementById('finishBtn').style.display = 'inline-block';
+            } else {
+                document.getElementById('finishBtn').style.display = 'none';
+            }
         }
 
-        // Slideshow
-        let slideIndex = 0;
-        
-        function showSlides() {
-            const slides = document.getElementsByClassName('slide');
-            const dots = document.getElementsByClassName('dot');
-            
-            for (let i = 0; i < slides.length; i++) {
-                slides[i].classList.remove('active');
+        function renderQuestion() {
+            const questionContainer = document.getElementById('quizContainer');
+            if (filteredQuestions.length === 0) return;
+
+            const question = filteredQuestions[currentQuestionIndex];
+            const userAnswerObj = userAnswers[question.id];
+            const isAnswered = !!(userAnswerObj && userAnswerObj.isAnswered);
+            const currentAnswer = userAnswerObj ? userAnswerObj.selection : null;
+
+            let optionsHtml = '';
+
+            if (question.type === 'SC' || question.type === 'MC' || question.type === 'RF') {
+                optionsHtml = question.options.map((option, index) => {
+                    const isSelected = Array.isArray(currentAnswer) ? currentAnswer.includes(index) : currentAnswer === index;
+                    const isCorrect = isAnswered && (Array.isArray(question.correct) ? question.correct.includes(index) : question.correct === index);
+                    const isWrongSelection = isSelected && isAnswered && !isCorrect;
+                    const optionClass = isSelected ? 'selected' : '';
+                    const resultClass = isAnswered ? (isCorrect ? 'correct' : (isWrongSelection ? 'wrong' : '')) : '';
+                    const letter = String.fromCharCode(65 + index);
+                    return `
+                        <div class="option ${optionClass} ${resultClass}" data-index="${index}">
+                            <div class="option-letter">${letter}</div>
+                            <span>${option}</span>
+                            ${question.type === 'MC' && !isAnswered ? `<input type="checkbox" class="option-checkbox" ${isSelected ? 'checked' : ''} />` : ''}
+                            ${isAnswered && question.type === 'MC' && isCorrect ? '✅' : ''}
+                            ${isAnswered && question.type === 'MC' && isWrongSelection ? '❌' : ''}
+                        </div>
+                    `;
+                }).join('');
+            } else if (question.type === 'FTB') {
+                optionsHtml = '<div class="fill-in-the-blank-container">';
+                const numBlanks = question.correct.length;
+                for (let i = 0; i < numBlanks; i++) {
+                    const value = currentAnswer && currentAnswer[i] !== undefined ? currentAnswer[i] : '';
+                    const placeholder = question.placeholder ? question.placeholder[i] : `Lücke ${i + 1}`;
+                    let inputClass = 'fill-in-the-blank-input';
+                    if (isAnswered) {
+                        const isBlankCorrect = userAnswerObj.correctBlanks[i];
+                        inputClass += isBlankCorrect ? ' correct-answer' : ' wrong-answer';
+                    }
+                    optionsHtml += `
+                        <div class="fill-in-the-blank-wrapper">
+                            <label for="ftb-${i}" class="fill-in-the-blank-label">${placeholder}:</label>
+                            <input type="text" id="ftb-${i}" data-index="${i}" class="${inputClass}" value="${value.replace(/"/g,'&quot;')}" ${isAnswered ? 'disabled' : ''}>
+                        </div>
+                    `;
+                }
+                optionsHtml += '</div>';
             }
-            
-            for (let i = 0; i < dots.length; i++) {
-                dots[i].classList.remove('active');
+
+            questionContainer.innerHTML = `
+                <div class="question-card fade-in" id="q-${question.id}">
+                    <div class="question-header">
+                        <div class="question-number">Frage ${currentQuestionIndex + 1} von ${filteredQuestions.length}</div>
+                        <div class="category-tag">${question.categoryName} (${question.type})</div>
+                    </div>
+                    <div class="question-text">${question.question}</div>
+                    <div class="options ${question.type === 'MC' ? 'multiple-choice' : ''}">${optionsHtml}</div>
+                    <div class="answer-section ${isAnswered ? 'show' : 'hide'}" id="answer-q-${question.id}">
+                        <div class="answer-header">Lösung:</div>
+                        <div class="answer-text">
+                            ${isAnswered ? getAnswerExplanation(question, userAnswerObj) : ''}
+                            ${question.explanation ? `<p style="margin-top: 10px; font-style: italic;">Erklärung: ${question.explanation}</p>` : ''}
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            if (question.type === 'SC' || question.type === 'MC' || question.type === 'RF') {
+                document.querySelectorAll('.option').forEach(optionElement => {
+                    if (!isAnswered) {
+                        optionElement.addEventListener('click', () => handleOptionClick(question, optionElement));
+                    }
+                });
             }
-            
-            slideIndex++;
-            if (slideIndex > slides.length) {
-                slideIndex = 1;
-            }
-            
-            slides[slideIndex - 1].classList.add('active');
-            dots[slideIndex - 1].classList.add('active');
-            
-            setTimeout(showSlides, 3000); // Change slide every 3 seconds
+
+            updateNavigationButtons();
+            const checkBtn = document.getElementById('checkAnswerBtn');
+            checkBtn.onclick = () => checkAnswer(question);
+            checkBtn.style.display = isAnswered ? 'none' : 'inline-block';
         }
 
-        function currentSlide(n) {
-            slideIndex = n;
-            const slides = document.getElementsByClassName('slide');
-            const dots = document.getElementsByClassName('dot');
-            
-            for (let i = 0; i < slides.length; i++) {
-                slides[i].classList.remove('active');
+        function getAnswerExplanation(question, userAnswer) {
+            if (!userAnswer) return '';
+            if (question.type === 'SC' || question.type === 'MC' || question.type === 'RF') {
+                const correctOptions = Array.isArray(question.correct) ? question.correct : [question.correct];
+                const correctLetters = correctOptions.map(i => String.fromCharCode(65 + i)).join(', ');
+                const userLetters = Array.isArray(userAnswer.selection)
+                    ? userAnswer.selection.map(i => String.fromCharCode(65 + i)).join(', ')
+                    : (userAnswer.selection !== null && userAnswer.selection !== undefined ? String.fromCharCode(65 + userAnswer.selection) : 'N/A');
+
+                const status = userAnswer.isCorrect
+                    ? '<span style="color: #28a745; font-weight: bold;">RICHTIG!</span>'
+                    : '<span style="color: #dc3545; font-weight: bold;">FALSCH.</span>';
+
+                return `
+                    <p>Status: ${status}</p>
+                    <p>Deine Auswahl: ${userAnswer.selection === null ? 'Keine Auswahl' : userLetters}</p>
+                    ${question.type !== 'RF' ? `<p>Korrekte Option(en): ${correctLetters} (${correctOptions.map(i => question.options[i]).join('; ')})</p>` : ''}
+                `;
+            } else if (question.type === 'FTB') {
+                let html = userAnswer.isCorrect
+                    ? '<p style="color: #28a745; font-weight: bold;">RICHTIG!</p>'
+                    : '<p style="color: #dc3545; font-weight: bold;">FALSCH.</p>';
+                html += '<table><thead><tr><th>Lücke</th><th>Deine Antwort</th><th>Korrekt</th></tr></thead><tbody>';
+                for (let i = 0; i < question.correct.length; i++) {
+                    const userVal = (userAnswer.selection[i] || '');
+                    const corr = Array.isArray(question.correct[i]) ? question.correct[i].join(' / ') : question.correct[i];
+                    const statusIcon = userAnswer.correctBlanks[i] ? '✅' : '❌';
+                    const placeholderText = question.placeholder ? question.placeholder[i] : `Lücke ${i+1}`;
+                    html += `<tr><td>${placeholderText}</td><td>${statusIcon} ${userVal}</td><td>${corr}</td></tr>`;
+                }
+                html += '</tbody></table>';
+                return html;
             }
-            
-            for (let i = 0; i < dots.length; i++) {
-                dots[i].classList.remove('active');
-            }
-            
-            slides[slideIndex].classList.add('active');
-            dots[slideIndex].classList.add('active');
+            return '';
         }
 
-        // Start slideshow
-        showSlides();
+        function handleOptionClick(question, optionElement) {
+            const index = parseInt(optionElement.getAttribute('data-index'));
+            const options = document.querySelectorAll('.option');
+            let currentSelection = (userAnswers[question.id] && userAnswers[question.id].selection)
+                ? (Array.isArray(userAnswers[question.id].selection) ? [...userAnswers[question.id].selection] : userAnswers[question.id].selection)
+                : (question.type === 'MC' ? [] : null);
 
-        // Form Submission
-        document.getElementById('notificationForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const fullName = document.getElementById('fullName').value;
-            const email = document.getElementById('email').value;
-            const currentLang = document.documentElement.lang || 'de';
-            
-            // Create mailto link
-            const subject = 'Tigrinya Learning - New Registration';
-            const body = `Name: ${fullName}%0D%0AEmail: ${email}`;
-            const mailtoLink = `mailto:filmon.brhane@students.fhnw.ch?subject=${subject}&body=${body}`;
-            
-            // Open email client
-            window.location.href = mailtoLink;
-            
-            // Show success message
-            const successMsg = document.getElementById('successMessage');
-            successMsg.textContent = translations[currentLang].successMessage;
-            successMsg.style.display = 'block';
-            
-            // Reset form
-            document.getElementById('notificationForm').reset();
-            
-            // Hide success message after 5 seconds
-            setTimeout(() => {
-                successMsg.style.display = 'none';
-            }, 5000);
+            if (question.type === 'SC' || question.type === 'RF') {
+                options.forEach(opt => opt.classList.remove('selected'));
+                currentSelection = index;
+                optionElement.classList.add('selected');
+            } else if (question.type === 'MC') {
+                if (!Array.isArray(currentSelection)) currentSelection = [];
+                if (optionElement.classList.contains('selected')) {
+                    optionElement.classList.remove('selected');
+                    const idxToRemove = currentSelection.indexOf(index);
+                    if (idxToRemove > -1) currentSelection.splice(idxToRemove, 1);
+                } else {
+                    optionElement.classList.add('selected');
+                    if (!currentSelection.includes(index)) currentSelection.push(index);
+                }
+            }
+
+            userAnswers[question.id] = { selection: currentSelection, isAnswered: false, isCorrect: false };
+            updateProgress();
+        }
+
+        function checkAnswer(question) {
+            if (userAnswers[question.id] && userAnswers[question.id].isAnswered) return;
+
+            let isCorrect = false;
+            let currentSelection = null;
+            let correctBlanks = [];
+
+            if (question.type === 'SC' || question.type === 'MC' || question.type === 'RF') {
+                const selectedOptions = Array.from(document.querySelectorAll('.option.selected')).map(el => parseInt(el.getAttribute('data-index')));
+                currentSelection = (question.type === 'SC' || question.type === 'RF')
+                    ? (selectedOptions.length > 0 ? selectedOptions[0] : null)
+                    : selectedOptions;
+
+                if (question.type === 'SC' || question.type === 'RF') {
+                    isCorrect = currentSelection === question.correct;
+                } else { // MC
+                    const correctAnswers = question.correct;
+                    isCorrect = selectedOptions.length === correctAnswers.length &&
+                                selectedOptions.every(val => correctAnswers.includes(val));
+                }
+            } else if (question.type === 'FTB') {
+                const inputs = Array.from(document.querySelectorAll('.fill-in-the-blank-input'));
+                currentSelection = inputs.map(input => input.value.trim());
+                let allBlanksCorrect = true;
+                correctBlanks = currentSelection.map((userAns, index) => {
+                    const correctAnswers = Array.isArray(question.correct[index]) ? question.correct[index] : [question.correct[index]];
+                    const match = correctAnswers.some(correctAnswer => userAns.toLowerCase() === String(correctAnswer).toLowerCase());
+                    if (!match) allBlanksCorrect = false;
+                    return match;
+                });
+                isCorrect = allBlanksCorrect;
+            }
+
+            userAnswers[question.id] = {
+                selection: currentSelection,
+                isAnswered: true,
+                isCorrect: isCorrect,
+                correctBlanks: correctBlanks
+            };
+
+            renderQuestion();
+            updateProgress();
+        }
+
+        function updateNavigationButtons() {
+            const total = filteredQuestions.length;
+
+            document.getElementById('prevBtn').style.display = currentQuestionIndex > 0 ? 'inline-block' : 'none';
+            document.getElementById('nextBtn').style.display = currentQuestionIndex < total - 1 ? 'inline-block' : 'none';
+
+            if (currentQuestionIndex === total - 1 && total > 0) {
+                document.getElementById('finishBtn').style.display = 'inline-block';
+                document.getElementById('nextBtn').style.display = 'none';
+            } else {
+                document.getElementById('finishBtn').style.display = 'none';
+            }
+        }
+
+        document.getElementById('prevBtn').addEventListener('click', () => {
+            if (currentQuestionIndex > 0) {
+                currentQuestionIndex--;
+                renderQuestion();
+            }
+        });
+
+        document.getElementById('nextBtn').addEventListener('click', () => {
+            if (currentQuestionIndex < filteredQuestions.length - 1) {
+                currentQuestionIndex++;
+                renderQuestion();
+            }
+        });
+
+        document.getElementById('finishBtn').addEventListener('click', () => {
+            showResults();
+        });
+
+        function showResults() {
+            const totalQuestions = filteredQuestions.length;
+            const inScopeIds = new Set(filteredQuestions.map(q => String(q.id)));
+            const answersInScope = Object.keys(userAnswers)
+                .filter(id => inScopeIds.has(String(id)) && userAnswers[id]);
+
+            const correctCount = answersInScope.filter(id => userAnswers[id].isCorrect).length;
+            const answeredCount = answersInScope.filter(id => userAnswers[id].isAnswered).length;
+
+            const score = (correctCount / (totalQuestions || 1)) * 100;
+            const passed = score >= 50;
+
+            document.querySelector('.quiz-content').innerHTML = `
+                <div class="result-summary fade-in">
+                    <h2>${passed ? 'Glückwunsch! 🎉' : 'Weiter üben… 😅'}</h2>
+                    <p>Du hast die Kategorie <strong>"${document.querySelector('.category-btn.active')?.textContent || 'Alle Fragen'}"</strong> abgeschlossen.</p>
+                    <div class="result-score">${correctCount}/${totalQuestions}</div>
+                    <p>Erfolgsrate: <strong>${score.toFixed(0)}%</strong></p>
+
+                    <div class="result-details">
+                        <div class="result-detail">
+                            <div class="stat-label">Gesamtzahl Fragen</div>
+                            <div class="result-detail-value">${totalQuestions}</div>
+                        </div>
+                        <div class="result-detail">
+                            <div class="stat-label">Beantwortet</div>
+                            <div class="result-detail-value">${answeredCount}</div>
+                        </div>
+                        <div class="result-detail">
+                            <div class="stat-label">Richtig</div>
+                            <div class="result-detail-value" style="color: #28a745;">${correctCount}</div>
+                        </div>
+                        <div class="result-detail">
+                            <div class="stat-label">Falsch</div>
+                            <div class="result-detail-value" style="color: #dc3545;">${answeredCount - correctCount}</div>
+                        </div>
+                    </div>
+
+                    <div class="button-group" style="margin-top: 40px;">
+                        <button class="btn btn-primary" onclick="window.location.reload();">Neues Quiz starten</button>
+                        <button class="btn btn-secondary" onclick="reviewAnswers();">Antworten einsehen</button>
+                    </div>
+                </div>
+            `;
+        }
+
+        function reviewAnswers() {
+            currentQuestionIndex = 0;
+            initializeQuiz(currentCategory);
+            document.getElementById('checkAnswerBtn').style.display = 'none';
+            document.getElementById('finishBtn').style.display = 'none';
+        }
+
+        function setupCategories() {
+            const categoriesCount = questionsData.reduce((acc, q) => {
+                acc[q.category] = (acc[q.category] || 0) + 1;
+                return acc;
+            }, {});
+
+            const categorySelector = document.getElementById('categorySelector');
+            let html = `<button class="category-btn active" data-category="all">Alle Fragen (${questionsData.length})</button>`;
+
+            const nameBase = {
+                'info': 'Informationssysteme',
+                'ssh': 'SSH & Sicherheit',
+                'os': 'OS-Grundlagen',
+                'boot': 'Boot-Prozess/systemd',
+                'perm': 'Dateirechte'
+            };
+
+            const orderedCategories = ['info','ssh','os','boot','perm'];
+
+            orderedCategories.forEach(cat => {
+                if (categoriesCount[cat]) {
+                    const name = `${nameBase[cat] || cat} (${categoriesCount[cat]})`;
+                    html += `<button class="category-btn" data-category="${cat}">${name}</button>`;
+                }
+            });
+
+            categorySelector.innerHTML = html;
+
+            document.querySelectorAll('.category-btn').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    document.querySelectorAll('.category-btn').forEach(b => b.classList.remove('active'));
+                    e.target.classList.add('active');
+                    currentQuestionIndex = 0;
+                    userAnswers = {}; // Antworten zurücksetzen beim Kategoriewechsel
+                    initializeQuiz(e.target.getAttribute('data-category'));
+                });
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            setupCategories();
+            initializeQuiz('all');
         });
     </script>
 </body>
